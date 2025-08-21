@@ -57,6 +57,40 @@ def basic_op(a, b):
 basic_op(5, 3)
 basic_op(3.14, -0.001)
 
+# collections - coleções de valores
+def collections():
+     print('-'*30)
+     # list - coleção de objetos ordenada (ordered) - or:ded
+     fruit_list = ['apple', 'banana', 'orange', 'grape']
+
+     # list functions - funções básicas de listas
+     # length - comprimento
+     print(len(fruit_list))
+     # index - indice (listas tem uma ordem, imposta pelo índice, índice começa no zero, pode negativos para o contrário)
+     print(fruit_list[2])
+     # append and delete
+     fruit_list.append('melon')
+     fruit_list.insert(0, 'lemon')
+     del fruit_list[1]
+     print(fruit_list)
+     # sort - classifica segundo algum critério (numérico, alfabético)
+     fruit_list.sort()
+     print(fruit_list)
+     # min - max
+     print(f'min: {min(fruit_list)} - max: {max(fruit_list)}')
+
+     # tuple - tupla é uma lista que não pode ser modificada
+     tuple = (1, 2, 3, 4)
+
+     # set - conjunto é uma lista não ordenada (sem índices) e que não pode ter itens repetidos
+     animals = set(['rabbit', 'dog', 'cat', 'dog'])
+     print(animals)
+     animals.add('lion')
+     animals.remove('cat')
+     print(animals)
+
+collections()
+
 def flow_control(num):
      # conditional statement
      print('-'*30)
@@ -136,6 +170,16 @@ def flow_control(num):
                print(f'encontrou o número: {n}.')
                break
           print(f'ainda não encontrou o número {n}.  atual: {num}')
+
+     # continue and break
+     counter = 0
+     while counter < 10:
+          counter += 1
+          if counter == 3:
+               continue
+          elif counter == 8:
+               break
+          print(f'current number: {counter}')
 
 # passe um número até 10
 flow_control(4)
