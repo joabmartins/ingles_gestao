@@ -65,3 +65,32 @@ animals.add('lion')
 animals.remove('cat')
 collections()
 
+#controle de fluxo
+def flow_control(num):
+#conditional statement: se condição verdadeiro ou falso
+    print('-' *30)
+   #verficar se é impar ou par
+    if num % 2 == 0:
+       print(f'{num} is even.')
+    else:
+       print(f'{num} is odd.')
+       #verificar a sensação do clima: hot, agradavel ou frio
+    temp = 25
+    if temp > 30:
+        print("it's hot outside! ")
+    elif temp > 20: #se não
+        print("thte weather is pleasant today!")
+    elif temp > 10:
+        print("it's cold outside!")
+#apto aposentaria
+    idade = 66
+    cont = 20
+    if idade > 65 and cont > 15:
+        print(" voce está apto a se aposentar")
+    else:
+        print("inapto a se aposentar!")
+#for = para cada item da lista faça:
+    students=['alice', 'bob', 'charlie', "diana"]
+    for name in students:
+        print(name)
+flow_control(6)
