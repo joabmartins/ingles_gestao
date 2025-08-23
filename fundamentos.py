@@ -90,7 +90,14 @@ def flow_control(num):
     else:
         print("inapto a se aposentar!")
 #for = para cada item da lista faça:
-    students=['alice', 'bob', 'charlie', "diana"]
+    students=['Alice', 'Bob', 'Charlie', "Diana"]
     for name in students:
         print(name)
+    else:
+        print('nenhum aluno restante')
+# até a condição ser falsa
+    counter = 0
+    while (counter <= 15):
+        print(counter)
+        counter += 1
 flow_control(6)
