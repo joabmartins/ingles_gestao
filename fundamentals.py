@@ -73,3 +73,48 @@ def collections():
     print(animals)
    
 collections()
+
+#controle de fluxo
+def flow_control(num):
+    #conditional statement: se condição então verdade senão falso
+    print('-'*30)
+    #verificar se o número recebido é par ou ímpar
+    if num % 2 == 0: #condição
+        print(f'{num} is even.') #par
+    else:
+        print(f'{num} is odd.')  # ímpar
+
+    #verificar a sensação do clima: quente, agradável, frio
+    print('-'*30)
+    temperature = 25
+    if temperature > 30: #se a temperatura for maior que 30 
+        print("it's hot outside!")  #está quente
+    elif temperature > 20: # senão, se a temperatura maior que 20 
+        print("The weather is pleasant today!") #está agradável
+    elif temperature >10: #senão, se a temperatura maior que 10
+        print("It's cold outside!") # está frio
+    
+    #apto para aposentadoria
+    print('-'*30)
+    idade = 59
+    contribuicao = 20
+    if idade > 65 and contribuicao > 15:
+        print('apto para se aposentar!')
+    else: 
+        print('não apto para se aposentar!')
+
+    #for = para cada item da lista faça:
+    students = ['Alice', 'Bob', 'Charlie', 'Diana']
+    for name in students: 
+        print(name)
+    else:
+        print("nenhuma aluno restante")
+
+    #fazer algo até que a condição seja falsa
+    counter = 0
+    while(counter <= 15):
+        print(counter)
+        #counter = counter + 1 - Código longo faz o código funcionar normalmente
+        counter += 1
+
+flow_control(6)
