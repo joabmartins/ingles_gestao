@@ -6,8 +6,6 @@ def create_table(sql):
     Executa um comando SQL para criar uma tabela e confirma a transação.
     Fecha a conexão e o cursor após a operação.
     """
-    conn = None # Inicializa conn fora do try para garantir que esteja definido
-    cur = None  # Inicializa cur fora do try
     try:
         conn = db_conn.conectar()
         if conn is None:
@@ -23,29 +21,47 @@ def create_table(sql):
         # Se ocorrer um erro, é uma boa prática fazer um rollback
         if conn:
             conn.rollback()
-        raise # Re-lança o erro para que ele possa ser tratado em outro lugar, se necessário
     finally:
         # Garante que o cursor e a conexão sejam fechados
-        if cur:
-            cur.close()
-            print("Cursor fechado.")
         if conn:
+            cur.close()
             conn.close()
-            print("Conexão com o banco de dados fechada.")
 
 def criar_tabela_parlamentar():
     """Define o SQL para criar a tabela parlamentar e chama create_table."""
     sql = """
     CREATE TABLE IF NOT EXISTS parlamentar (
         id SERIAL PRIMARY KEY,
-        mat_parlamentar INT NOT NULL,
-        nome VARCHAR(100) UNIQUE NOT NULL,
+        mat_parlamentar UNIQUE INT NOT NULL,
+        nome VARCHAR(100) NOT NULL,
         partido VARCHAR(100) NOT NULL,
         UF VARCHAR(100) NOT NULL,
-        idLegislatura INT NOT NULL
+        total_gastos NUMERIC(10, 2),
+    );"""
+    print("Iniciando a criação da tabela 'parlamentar'.")
+    create_table(sql)
+
+def criar_tabela_despesa():
+    """Define o SQL para criar a tabela parlamentar e chama create_table."""
+    sql = """
+    CREATE TABLE IF NOT EXISTS despesa (
+        id SERIAL PRIMARY KEY,
+        ano INT,
+        mes INT,
+        tipo_despesa TEXT,
+        cod_documento INT,
+        data_documento TIMESTAMP,
+        num_documento VARCHAR(255),
+        valor_documento NUMERIC(10, 2),
+        nome_fornecedor VARCHAR(255),
+        cnpj_cpf_fornecedor VARCHAR(20),
+        valor_liquido NUMERIC(10, 2),
+        id_parlamentar INT,
+        FOREIGN KEY (id_parlamentar) REFERENCES parlamentar(id)
     );"""
     print("Iniciando a criação da tabela 'parlamentar'.")
     create_table(sql)
 
 # Execução principal
 criar_tabela_parlamentar()
+criar_tabela_despesa()

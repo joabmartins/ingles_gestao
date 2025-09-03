@@ -55,14 +55,23 @@ dados_abertos_url = 'https://dadosabertos.camara.leg.br/api/v2/deputados'
 '''
 despesa_exemplo = 'https://dadosabertos.camara.leg.br/api/v2/deputados/220560/despesas'
 
-response = requests.get(despesa_exemplo)
+response = requests.get(dados_abertos_url)
 
 if response.status_code == 200:
     data = response.json()
     print("Dados JSON recebidos com sucesso!")
     # Aqui você pode começar a processar e salvar os dados no seu banco de dados
     # Por exemplo: print(json.dumps(data[0], indent=2)) para ver um item
+
+    # deputados
     # print(json.dumps(data[0], indent=2))
-    print(json.dumps(data, indent=2))
+
+    # despesa
+    # print(json.dumps(data, indent=2))
+
+    # size
+    parlamentares_list = data.get("dados")
+    print(len(parlamentares_list))
+    print(json.dumps(parlamentares_list[0:5], indent=2))
 else:
     print(f"Erro ao buscar os dados: {response.status_code}")
